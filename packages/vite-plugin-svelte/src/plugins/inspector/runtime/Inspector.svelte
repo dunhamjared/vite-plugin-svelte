@@ -244,6 +244,13 @@
 		if (options.customStyles) {
 			b.classList.add('svelte-inspector-enabled');
 		}
+	  const host = document.getElementById('svelte-inspector-host')
+	  if (host) {
+	    try {
+	      host.hidePopover()
+	      host.showPopover()
+	    } catch (err) {}
+	  }
 		listeners(b, enabled);
 		activate_initial_el();
 	}
@@ -360,6 +367,9 @@
 {/if}
 
 <style>
+	:global(#svelte-inspector-host *) {
+		pointer-events: auto;
+	}
 	:global(body.svelte-inspector-enabled *) {
 		cursor: var(--svelte-inspector-icon), crosshair !important;
 	}
