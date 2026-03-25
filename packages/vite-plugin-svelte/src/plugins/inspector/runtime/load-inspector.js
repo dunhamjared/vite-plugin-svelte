@@ -8,7 +8,16 @@ function create_inspector_host() {
 	}
 	const el = document.createElement('div');
 	el.setAttribute('id', id);
+	el.popover = 'manual'
+	Object.assign(el.style, {
+  	background: 'transparent',
+  	border: 'none',
+  	padding: '0',
+  	margin: '0',
+  	pointerEvents: 'none'
+  })
 	document.documentElement.appendChild(el);
+	el.showPopover()
 	return el;
 }
 mount(Inspector, { target: create_inspector_host() });
